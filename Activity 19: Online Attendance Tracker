@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> attendees = new List<string>();
+        string name;
+
+        Console.WriteLine("Enter student names logging in (type 'end' to finish):");
+
+        while (true)
+        {
+            Console.Write("Name: ");
+            name = Console.ReadLine();
+
+            if (name.ToLower() == "end")
+                break;
+
+            if (!attendees.Contains(name, StringComparer.OrdinalIgnoreCase))
+            {
+                attendees.Add(name);
+                Console.WriteLine($"Added: {name}");
+            }
+            else
+            {
+                Console.WriteLine($"Duplicate ignored: {name}");
+            }
+        }
+
+        attendees.Sort(StringComparer.OrdinalIgnoreCase);
+
+        Console.WriteLine($"\nTotal unique attendees: {attendees.Count}");
+        Console.WriteLine("List of attendees:");
+        foreach (string student in attendees)
+        {
+            Console.WriteLine(student);
+        }
+    }
+}
