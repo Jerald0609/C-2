@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> cart = new List<string>();
+        bool running = true;
+
+        while (running)
+        {
+            Console.WriteLine("\n--- Shopping Cart Menu ---");
+            Console.WriteLine("1. Add item");
+            Console.WriteLine("2. Remove item");
+            Console.WriteLine("3. View cart");
+            Console.WriteLine("4. Clear cart");
+            Console.WriteLine("5. Exit");
+            Console.Write("Choose an option: ");
+            
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Console.Write("Enter product name to add: ");
+                    string addItem = Console.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(addItem))
+                    {
+                        cart.Add(addItem);
+                        Console.WriteLine($"'{addItem}' added to cart.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid item name.");
+                    }
+                    break;
+
+                case "2":
+                    Console.Write("Enter product name to remove: ");
+                    string removeItem = Console.ReadLine();
+                    if (cart.Remove(removeItem))
+                    {
+                        Console.WriteLine($"'{removeItem}' removed from cart.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"'{removeItem}' not found in cart.");
+                    }
+                    break;
+
+                case "3":
+                    if (cart.Count == 0)
+                    {
+                        Console.WriteLine("Your cart is empty.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nItems in your cart:");
+                        foreach (string item in cart)
+                        {
+                            Console.WriteLine("- " + item);
+                        }
+                    }
+                    break;
+
+                case "4":
+                    cart.Clear();
+                    Console.WriteLine("Cart has been cleared.");
+                    break;
+
+                case "5":
+                    running = false;
+                    Console.WriteLine("Exiting program. Thank you!");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid option. Please choose 1-5.");
+                    break;
+            }
+        }
+    }
+}
