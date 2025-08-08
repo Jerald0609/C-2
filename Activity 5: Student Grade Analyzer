@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            int grade;
+            do
+            {
+                Console.Write($"Enter grade {i + 1} (0–100): ");
+            } while (!int.TryParse(Console.ReadLine(), out grade) || grade < 0 || grade > 100);
+
+            switch (grade / 10)
+            {
+                case 10:
+                case 9: Console.WriteLine("A"); break;
+                case 8: Console.WriteLine("B"); break;
+                case 7: Console.WriteLine("C"); break;
+                case 6: Console.WriteLine("D"); break;
+                default: Console.WriteLine("F"); break;
+            }
+        }
+    }
+}
