@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> courses = new List<string>();
+
+        Console.WriteLine("Register up to 6 courses (5-character course codes):");
+
+        for (int i = 0; i < 6; i++)
+        {
+            Console.Write($"Enter course code #{i + 1}: ");
+            string code = Console.ReadLine();
+
+            // Validate length
+            if (code.Length != 5)
+            {
+                Console.WriteLine("Error: Course code must be exactly 5 characters long.");
+                continue; // skip adding this code
+            }
+
+            // Check for duplicates
+            if (courses.Contains(code))
+            {
+                Console.WriteLine("Error: Duplicate course code not allowed.");
+                continue; // skip adding this code
+            }
+
+            // If valid, add to list
+            courses.Add(code);
+            Console.WriteLine("Course registered successfully.");
+        }
+
+        // Print all valid courses
+        Console.WriteLine("\nRegistered Courses:");
+        foreach (string course in courses)
+        {
+            Console.WriteLine(course);
+        }
+    }
+}
