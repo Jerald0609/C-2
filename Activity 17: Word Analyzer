@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> uniqueWords = new List<string>();
+
+        Console.WriteLine("Enter 5 different sentences:");
+
+        for (int i = 1; i <= 5; i++)
+        {
+            Console.Write($"Sentence {i}: ");
+            string sentence = Console.ReadLine();
+            string[] words = sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string word in words)
+            {
+                string lowerWord = word.ToLower();
+                if (!uniqueWords.Contains(lowerWord))
+                {
+                    uniqueWords.Add(lowerWord);
+                }
+            }
+        }
+
+        uniqueWords.Sort();
+
+        Console.WriteLine($"\nTotal unique words: {uniqueWords.Count}");
+        Console.WriteLine("Sorted unique words:");
+        foreach (string word in uniqueWords)
+        {
+            Console.WriteLine(word);
+        }
+    }
+}
