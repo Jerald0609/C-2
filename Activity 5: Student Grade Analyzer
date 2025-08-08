@@ -1,9 +1,15 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
     static void Main()
     {
+        List<int> grades = new List<int>();
+        int countA = 0, countB = 0, countC = 0, countD = 0, countF = 0;
+
+        // Input & validation
         for (int i = 0; i < 7; i++)
         {
             int grade;
@@ -12,15 +18,41 @@ class Program
                 Console.Write($"Enter grade {i + 1} (0–100): ");
             } while (!int.TryParse(Console.ReadLine(), out grade) || grade < 0 || grade > 100);
 
+            grades.Add(grade);
+
+            // Categorize using switch
             switch (grade / 10)
             {
                 case 10:
-                case 9: Console.WriteLine("A"); break;
-                case 8: Console.WriteLine("B"); break;
-                case 7: Console.WriteLine("C"); break;
-                case 6: Console.WriteLine("D"); break;
-                default: Console.WriteLine("F"); break;
+                case 9:
+                    Console.WriteLine("A");
+                    countA++;
+                    break;
+                case 8:
+                    Console.WriteLine("B");
+                    countB++;
+                    break;
+                case 7:
+                    Console.WriteLine("C");
+                    countC++;
+                    break;
+                case 6:
+                    Console.WriteLine("D");
+                    countD++;
+                    break;
+                default:
+                    Console.WriteLine("F");
+                    countF++;
+                    break;
             }
         }
+
+        // Display results
+        Console.WriteLine("\n--- Grade Summary ---");
+        Console.WriteLine($"A: {countA}");
+        Console.WriteLine($"B: {countB}");
+        Console.WriteLine($"C: {countC}");
+        Console.WriteLine($"D: {countD}");
+        Console.WriteLine($"F: {countF}");
     }
 }
