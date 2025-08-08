@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Lists for countries and capitals
+        List<string> countries = new List<string>
+        {
+            "Philippines", "Japan", "France", "Canada", "Brazil",
+            "Australia", "Germany", "India", "Egypt", "Mexico"
+        };
+
+        List<string> capitals = new List<string>
+        {
+            "Manila", "Tokyo", "Paris", "Ottawa", "Brasilia",
+            "Canberra", "Berlin", "New Delhi", "Cairo", "Mexico City"
+        };
+
+        Console.Write("Enter a country name: ");
+        string inputCountry = Console.ReadLine();
+
+        // Case-insensitive search
+        int index = countries.FindIndex(c => c.Equals(inputCountry, StringComparison.OrdinalIgnoreCase));
+
+        if (index != -1)
+        {
+            Console.WriteLine($"The capital of {countries[index]} is {capitals[index]}.");
+        }
+        else
+        {
+            Console.WriteLine("Country not found.");
+        }
+    }
+}
