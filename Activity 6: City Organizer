@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> cities = new List<string>();
+        string input;
+
+        Console.WriteLine("Enter city names (type 'exit' to finish):");
+
+        while (true)
+        {
+            input = Console.ReadLine();
+
+            if (input.ToLower() == "exit")
+                break;
+
+            if (!string.IsNullOrWhiteSpace(input))
+                cities.Add(input.Trim());
+        }
+
+        // Remove duplicates and sort
+        var uniqueCities = cities.Distinct().ToList();
+        uniqueCities.Sort();
+
+        Console.WriteLine("\n--- Cities in Alphabetical Order ---");
+        foreach (var city in uniqueCities)
+        {
+            Console.WriteLine(city);
+        }
+    }
+}
