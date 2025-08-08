@@ -5,25 +5,23 @@ class Program
 {
     static void Main()
     {
-        List<string> names = new List<string>();
+        List<string> names = new();
         string input;
         while (true)
         {
-            Console.Write("Enter name (type 'done' to finish): ");
+            Console.Write("Enter name (done to stop): ");
             input = Console.ReadLine();
             if (input.ToLower() == "done") break;
-            names.Add(input);
+            names.Add(input.ToUpper());
         }
 
         int countA = 0;
-        Console.WriteLine("\nNames in UPPERCASE:");
-        foreach (string name in names)
+        Console.WriteLine("\nNames in uppercase:");
+        foreach (var name in names)
         {
-            string upper = name.ToUpper();
-            Console.WriteLine(upper);
-            if (upper.StartsWith("A")) countA++;
+            Console.WriteLine(name);
+            if (name.StartsWith("A")) countA++;
         }
-
         Console.WriteLine($"\nNames starting with 'A': {countA}");
     }
 }
