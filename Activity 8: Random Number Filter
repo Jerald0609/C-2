@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> numbers = new List<int>();
+
+        Console.WriteLine("Enter 10 numbers:");
+        for (int i = 0; i < 10; i++)
+        {
+            int num;
+            while (!int.TryParse(Console.ReadLine(), out num))
+            {
+                Console.Write("Invalid input. Enter a number: ");
+            }
+            numbers.Add(num);
+        }
+
+        // Filter numbers > 50
+        List<int> filtered = numbers.Where(n => n > 50).ToList();
+
+        // Display counts
+        Console.WriteLine($"\nOriginal count: {numbers.Count}");
+        Console.WriteLine($"Filtered count (>50): {filtered.Count}");
+
+        // Optional: Show filtered list
+        Console.WriteLine("\nNumbers > 50:");
+        foreach (var n in filtered)
+            Console.WriteLine(n);
+    }
+}
