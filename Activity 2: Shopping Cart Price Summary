@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<decimal> prices = new();
+        decimal price;
+
+        while (true)
+        {
+            Console.Write("Enter price (-1 to stop): ");
+            if (!decimal.TryParse(Console.ReadLine(), out price) || (price < 0 && price != -1))
+            {
+                Console.WriteLine("Invalid price.");
+                continue;
+            }
+            if (price == -1) break;
+            prices.Add(price);
+        }
+
+        if (prices.Count > 0)
+        {
+            Console.WriteLine($"\nTotal items: {prices.Count}");
+            Console.WriteLine($"Average price: {prices.Average():F2}");
+            Console.WriteLine($"Highest price: {prices.Max():F2}");
+            Console.WriteLine($"Lowest price: {prices.Min():F2}");
+        }
+        else Console.WriteLine("No prices entered.");
+    }
+}
