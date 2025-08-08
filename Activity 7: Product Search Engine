@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> products = new List<string>();
+
+        Console.WriteLine("Enter 8 product names:");
+        for (int i = 0; i < 8; i++)
+        {
+            products.Add(Console.ReadLine());
+        }
+
+        Console.Write("\nEnter a keyword to search: ");
+        string keyword = Console.ReadLine().ToLower();
+
+        List<string> matches = new List<string>();
+
+        foreach (var product in products)
+        {
+            if (product.ToLower().Contains(keyword))
+                matches.Add(product);
+        }
+
+        if (matches.Count > 0)
+        {
+            Console.WriteLine("\nMatching Products:");
+            foreach (var m in matches)
+                Console.WriteLine(m);
+        }
+        else
+        {
+            Console.WriteLine("\nNo products found.");
+        }
+    }
+}
